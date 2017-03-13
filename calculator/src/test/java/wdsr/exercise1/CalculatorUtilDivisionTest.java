@@ -29,7 +29,15 @@ public class CalculatorUtilDivisionTest {
 	
 	@Test
 	public void test16dividedBy4() {
-		fail("Not yet implemented");
+		// given
+		doReturn(4.0).when(calculator).divide(anyInt(), anyInt());
+
+		// when
+		String result = calcUtil.getDivisionText(16, 4);
+
+		// then
+		assertEquals("16 / 4 = 4.0", result);
+		verify(calculator).divide(anyInt(), anyInt()); // check if our calculator mock was really invoked.
 	}		
 
 	@Test(expected=IllegalArgumentException.class)
